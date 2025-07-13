@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://arapoken.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://arapoken.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/syntax.css' />
+    <title>StatField1 - Landau-Ginzburg Theory - arapoken@kitty314:~$</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/Chibimitaclear.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    <link rel="stylesheet" href="https://arapoken.github.io/css/custom.css">
+    <script type="text/javascript" src="https://arapoken.github.io/js/custom.js"></script>
+
+    
+    <meta name="description"
+  content="Lecture notes from David Tong - Statistical Field Theory
+" />
+<meta name="keywords"
+  content='blog, google analytics' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://arapoken.github.io/post/statfield1/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="StatField1 - Landau-Ginzburg Theory - arapoken@kitty314:~$" />
+<meta name="twitter:description"
+  content="Lecture notes from David Tong - Statistical Field Theory
+" />
+<meta name="twitter:site" content="https://arapoken.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://arapoken.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="StatField1 - Landau-Ginzburg Theory - arapoken@kitty314:~$">
+<meta property="og:description"
+  content="Lecture notes from David Tong - Statistical Field Theory
+" />
+<meta property="og:url" content="https://arapoken.github.io/post/statfield1/" />
+<meta property="og:site_name" content="StatField1 - Landau-Ginzburg Theory" />
+<meta property="og:image"
+  content="https://arapoken.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2025-07-11 19:30:09 &#43;0800 &#43;0800" />
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.min.js" defer></script>
+
+<script defer
+  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+</head>
+
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://arapoken.github.io/">
+        <img class="octicon" height="32" width="32" src="/images/mutsumi9.png">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          
+          <form target="_blank" id="search-form" action="" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+            </label>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://arapoken.github.io/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="/images/mutsumi9.png">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
+</div>
+
+  
+<div class="application-main">
+  <div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://arapoken.github.io/">
+                  <img class=" avatar-user"
+                    src="/images/kkr.jpg"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://arapoken.github.io/"></a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="https://arapoken.github.io/post/statfield1/">StatField1 - Landau-Ginzburg Theory</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 11 Jul 2025 19:30:09 &#43;0800"
+                    class="no-wrap">
+                    Fri, 11 Jul 2025 19:30:09 &#43;0800</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Sun, 13 Jul 2025 03:34:53 &#43;0000"
+                    class="no-wrap">
+                    Sun, 13 Jul 2025 03:34:53 &#43;0000</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      3686 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>Lecture notes from David Tong - <a href="https://www.damtp.cam.ac.uk/user/tong/sft.html">Statistical Field Theory</a></p>
+<h2><img src="mskk.jpg" alt=""></h2>
+<h2 id="landau-ginzburg-理论">Landau-Ginzburg 理论</h2>
+<h2 id="1-自由能泛函与鞍点近似空间非均匀性的开端">1 自由能泛函与鞍点近似：空间非均匀性的开端</h2>
+<h3 id="11-自由能泛函的构造">1.1 自由能泛函的构造</h3>
+<p>经典的 Landau 平均场理论在讨论临界附近的行为时失效，因为它首先假设了一个全局性的平均序参量 <code>$ \langle m \rangle $</code> 的存在，在此基础上忽略了临界附近那些决不可忽略的涨落，这固然方便我们解决问题，但此时的系统如一潭死水，无法显示其精彩的波动行为。</p>
+<p>于是 Ginzburg 推广了 Landau 的理论，与经典的 Landau 理论相比，LG 理论的出发点仍然相同——先写下系统的自由能表达式，再讨论其热力学行为。但此时的自由能不再是一个简单的单一变量函数 <code>$F(m)$</code>，而是一个关于序参量函数 <code>$m(x)$</code> 的自由能泛函 <code>$F[m(x)]$</code>，从而允许了序参量在空间上的波动。</p>
+<p>定义在每个点 <code>$ \mathbf{x} $</code> 上的函数 <code>$ m(\mathbf{x}) $</code> 也称为局部序参量（local order parameter）。拿格点模型举例，就是把原始晶格划分为若干边长为 a 的小盒子，在每个盒子内对自旋变量求平均
+<code>$$m(\mathbf{x})=\frac{1}{N'}\sum_{i}s_i$$</code>
+其中 <code>$ \mathbf{x} $</code> 表示盒子中心的位置，这样的过程叫做粗粒化（coarse-graining）。</p>
+<p>若盒子的数量 <code>$ N/N' $</code> 足够大，则 <code>$ \mathbf{x} $</code> 可视为连续变量，从而 <code>$ m(\mathbf{x}) $</code> 不再是 [-1,+1] 区间的离散取值，而是一个连续变量。经典的配分函数
+$$\begin{align}
+Z=\sum_{m(\mathbf{x})}\sum_{ {s_i}| m(\mathbf{x})}  e^{-\beta E[s_i]}:=\sum_{m(\mathbf{x})}e^{-\beta F[m(\mathbf{x})]}
+\end{align}$$
+也需要推广为对序参量函数空间的路径积分
+$$\begin{align}
+Z=\int \mathcal{D}m(\mathbf{x}) e^{-\beta F[m(\mathbf{x})]}
+\end{align}$$</p>
+<p>下一步便是有关我们如何构造自由能泛函 <code>$ F[m(\mathbf{x})] $</code>。这和 Landau 平均场理论的出发点也十分类似，在后者中我们用遵守一定规则（例如 <code>$ \mathbb{Z}_2 $</code> 对称性）的最简洁的幂律函数 <code>$ F(m)=am^2+bm^4+\dots $</code> 表达自由能。在 LG 理论中，我们只需添加有关空间波动的梯度项 <code>$ \nabla m(\mathbf{x}) $</code>，在遵循平移对称和（长程尺度上的）旋转对称、<code>$ \mathbb{Z}_2 $</code> 对称的前提下，我们写出
+$$\begin{align}
+F[m(\mathbf{x})]=\int d^d x[\frac{1}{2}\alpha_2(T)m^2 +\frac{1}{4} \alpha_4(T) m^4 +\frac{1}{2}\gamma(T)(\nabla m)^2+\dots]
+\end{align}$$
+注意，我们已将自由能泛函表达为自由能泛函密度 <code>$ f[m(\mathbf{x})]=\frac{1}{2}\alpha_2(T)m^2 +\frac{1}{4} \alpha_4(T) m^4 +\frac{1}{2}\gamma(T)(\nabla m)^2+\dots $</code> 的积分，因为我们已经在一个局域的空间定义统计场 <code>$m(\mathbf{x})$</code>，相应地自由能也必须是局域的。毕竟在我们的假设中，一个自旋无法影响到与之相隔甚远的另一个自旋；即使考虑临界涨落，也通常是由梯度项刻画，无需显式的形如 <code>$m(x)m(y)$</code> 的非局域耦合。</p>
+<p>式中还含有参量 <code>$ \alpha(T), \gamma(T) $</code> 等，但它们的具体形式对我们来说不重要，我们只需要知道它们是解析的，以及 <code>$\alpha_4(T)&gt;0$</code>，而 <code>$ \alpha_2(T) $</code> 在发生二阶相变时变号，与我们在 Landau 理论中所知的相同。另外由于现实世界的相互作用更加支持平滑、连续的基态，因此假设 <code>$\gamma(T)&gt;0$</code>，用于惩罚局域强烈的空间变化，保证自由能有下界。</p>
+<h3 id="12-鞍点近似下求解基态">1.2 鞍点近似下求解基态</h3>
+<p>有了自由能泛函的形式，我们仍可以沿用鞍点近似（saddle point approximation）的思想：在热力学极限 <code>$N\rightarrow\infty$</code> 下，由于
+$$\begin{align}
+Z=\sum_m e^{-\beta N f(m)}\approx e^{-\beta N f_{min}}
+\end{align}$$
+仅有自由能 <code>$ F[m(\mathbf{x})] $</code> 最小的项对配分函数有主要贡献。对其变分 <code>$\frac{\delta F}{\delta m(\mathbf{x})}=0$</code>，得到关于 <code>$m(x)$</code> 的方程
+$$
+\gamma\nabla^2m=\alpha_2 m+\alpha_4 m^3
+$$
+这样的方程可以有常数解 <code>$m(\mathbf{x})=\pm m_0=\pm\sqrt{-\frac{\alpha_2}{\alpha_4}}$</code>，这恰恰对应了平均场理论的结果，即空间均匀的基态。但更一般的情况是 <code>$ m(\mathbf{x}) $</code> 不是常数的情况，例如一维空间在 <code>$ x=X $</code> 处存在畴壁（domain wall）的情况，假设 <code>$ m(x\rightarrow -\infty)=-m_0\text{, }m(x\rightarrow +\infty)=+m_0 $</code>，则中间存在缓慢变化的解
+$$\begin{align}
+m(x)=m_0\tanh(\sqrt{-\frac{\alpha_2}{2\gamma}}(x-X))
+\end{align}$$
+更复杂的情形下，还可以存在脉冲、孤子（soliton）等，可以视为拓扑缺陷或准粒子的激发。</p>
+<h2 id="2-高斯近似green-函数与关联长度理解涨落的空间关联">2 高斯近似、Green 函数与关联长度：理解涨落的空间关联</h2>
+<h3 id="21-高斯近似下的自由能表达式">2.1 高斯近似下的自由能表达式</h3>
+<p>以上我们仅仅是浅尝了 LG 理论在非均匀空间配置上的可能性，仍没有考虑涨落带来的效应。然而，涨落在物理系统中无处不在，磁性材料中原子的自旋有微小的团簇到大范围的磁畴，液体中的分子密度有微观湍流或宏观波动，早期宇宙的量子涨落影响着不同尺度的星系结构形成。现实系统的行为往往是由不同尺度的涨落共同决定，而不是某个局部决定整体。为了理解不同尺度上的涨落，我们需要引入 Fourier 变换，将场变量 <code>$ \phi(\mathbf{x}) $</code> 分解为不同尺度上的模式，即
+$$\begin{align}
+\phi(\mathbf{x})=\int \frac{d^d k}{(2\pi)^d} e^{i\mathbf{k} \cdot \mathbf{x}} \phi_{\mathbf{k}}
+\end{align}$$</p>
+<p>我们考虑空间均匀背景下的小涨落，并且只考虑二次项的涨落效应，这意味着我们讨论的是远离临界点的相，而不是临界附近的行为（强烈的临界涨落带来的耦合项无法忽略），这种情况称为高斯近似（gaussian approximation）。在 <code>$ \langle \phi \rangle=\pm m_0 $</code> 的基础上将 <code>$ \phi(\mathbf{x})=\langle \phi \rangle+\tilde{\phi}(\mathbf{x}) $</code> 代入自由能，忽略小量 <code>$ \tilde{\phi}  $</code> 的高阶项，得到如下形式
+$$\begin{align}
+F[\tilde{\phi}(\mathbf{x})]=F[m_0]+\frac{1}{2}\int d^d x[\gamma(\nabla \tilde{\phi})^2+\mu^2\tilde{\phi}^2]
+\end{align}$$
+第一项是常数，对 <code>$ Z $</code> 无贡献。利用式 (6)，我们可以将第二项转化为动量空间的积分
+<code>$$\begin{align} \begin{split} F[\phi_{\mathbf{k}}]&amp;=\frac{1}{2} \int \frac{d^d k_1}{(2\pi)^d}\frac{d^d k_2}{(2\pi)^d} \int d^d x (-\gamma \mathbf{k_1}\cdot \mathbf{k_2}+\mu^2) \phi_{\mathbf{k_1}} \phi_{\mathbf{k_2}} e^{i(\mathbf{k_1}+\mathbf{k_2})\cdot \mathbf{x}}\\ &amp;=\frac{1}{2}\int \frac{d^d k}{(2\pi)^d} (\gamma k^2+\mu^2)\phi_{\mathbf{k}}\phi_{\mathbf{-k}}\\ &amp;=\frac{1}{2}\int \frac{d^d k}{(2\pi)^d} (\gamma k^2+\mu^2)\phi_{\mathbf{k}}\phi^*_{\mathbf{k}} \end{split} \end{align}$$</code>
+其中第二个等号我们利用了 <code>$ \delta $</code> 函数的性质 <code>$\int d^d \mathbf{x}e^{i(\mathbf{k_1}+\mathbf{k_2})\cdot \mathbf{x}}=(2\pi)^d \delta^d(\mathbf{k_1}+\mathbf{k_2})$</code>。</p>
+<h3 id="22-关联函数是一个-green-函数">2.2 关联函数是一个 Green 函数</h3>
+<p>我们想知道在无外场的情况下系统的自发涨落是怎样的，不妨先考虑一个微扰外场的影响，随后再令外场趋于零。对于线性响应的系统，在加一非均匀外场 <code>$ B(\mathbf{x}) $</code> 的情况下，自由能可以写为
+$$\begin{align}
+F[\phi(\mathbf{x)}]=\int d^d x [\frac{\gamma}{2}(\nabla \phi(\mathbf{x}))^2 +\frac{\mu^2}{2} \phi^2(\mathbf{x}) -B(\mathbf{x})\phi(\mathbf{x})]
+\end{align}$$
+转换到动量空间，成为
+$$\begin{align}
+F[\phi_{\mathbf{k}}]=\int \frac{d^d k}{(2\pi)^d} [\frac{1}{2}(\gamma k^2 +\mu^2)\phi_{\mathbf{k}} \phi_{\mathbf{-k}}-B_{\mathbf{-k}}\phi_{\mathbf{k}}]
+\end{align}$$
+我们可以配方，令 <code>$\hat{\phi_{\mathbf{k}}}=\phi_{\mathbf{k}}-\frac{B_{\mathbf{k}}}{\gamma k^2+\mu^2}$</code>，代入上式得
+$$\begin{align}
+F[\hat{\phi_{\mathbf{k}}}]=\int \frac{d^d k}{(2\pi)^d} [\frac{1}{2}(\gamma k^2 +\mu^2)|\hat{\phi_{\mathbf{k}}}|^2-\frac{1}{2}\frac{|B_{\mathbf{k}}|^2}{\gamma k^2 +\mu^2}]
+\end{align}$$
+再计算配分函数的路径积分 <code>$ Z=\prod_{\mathbf{k}} \int d\hat{\phi_{\mathbf{k}}} d\hat{\phi^*_{\mathbf{k}}} e^{-\beta F[\hat{\phi_{\mathbf{k}}}]} $</code>，我们发现第一项成为一个高斯型的积分
+<code>\begin{align} \begin{split} Z^{(1)}&amp;=\prod_{\mathbf{k}} \int d\hat{\phi_{\mathbf{k}}} d\hat{\phi_{\mathbf{k}}^*} \exp(-\frac{\beta}{2V}\sum_{\mathbf{k}}(\gamma k^2+\mu^2)|\phi_{\mathbf{k}}|^2)\\ &amp;=\prod_{\mathbf{k}} \left( \int d\hat{\phi_{\mathbf{k}}} d\hat{\phi_{\mathbf{k}}^*} \exp(-\frac{\beta}{2V}(\gamma k^2+\mu^2)|\phi_{\mathbf{k}}|^2) \right) \end{split} \end{align}</code>
+其中已将积分 <code>$\int \frac{d^d k}{(2\pi)^d}$</code> 替换为求和 <code>$\frac{1}{V}\sum_{\mathbf{k}}$</code>，而完整的结果为
+$$\begin{align}
+Z[B(\mathbf{x})]=e^{-\beta F_{\rm{thermo}}} \exp (\frac{\beta}{2}\int \frac{d^d k}{(2\pi)^d}  \frac{|B_{\mathbf{k}}|^2}{\gamma k^2 +\mu^2})
+\end{align}$$
+其中 <code>$ F_{\rm{thermo}} $</code> 是自由能第一项积分得到的与外场无关的纯热力学贡献，是一个全局项，对涨落关联无贡献。</p>
+<p>我们可以用关联函数 <code>$ \langle \phi(\mathbf{x})\phi(\mathbf{y})\rangle = \langle \phi(\mathbf{x})\phi(\mathbf{y})\rangle-\langle \phi \rangle^2 $</code> 描述空间涨落的关联程度。利用统计物理中常见的 <strong><code>$ \beta$</code> trick</strong>，我们可以写出 <code>$\langle \phi(\mathbf{x})\rangle_{B}=\frac{1}{\beta} \frac{\delta \log Z}{\delta B(\mathbf{x})}$</code>，再对 <code>$ B(\mathbf{y}) $</code> 求一次导，得到
+<code>\begin{align} \begin{split} \frac{1}{\beta^2} \frac{\delta^2 \log Z}{\delta B(\mathbf{x})B(\mathbf{y})}&amp;=\frac{1}{\beta ^2 Z} \frac{\delta ^2 Z}{\delta B(\mathbf{x})\delta B(\mathbf{y})} - \frac{1}{\beta^2 Z^2}\frac{\delta Z}{\delta B(\mathbf{x})} \frac{\delta {Z}}{\delta B(\mathbf{y})}\\ &amp;=\langle \phi(\mathbf{x})\phi(\mathbf{y})\rangle_{B}-\langle \phi(\mathbf{x})\rangle_{B} \langle\phi(\mathbf{y}) \rangle_{B} \end{split} \end{align}</code></p>
+<p>在高温相，<code>$\langle \phi \rangle_{B=0} =0$</code>，则由上式可以得到关联函数
+<code>\begin{align} \begin{split} \langle \phi(\mathbf{x})\phi(\mathbf{y})\rangle&amp;=\frac{1}{\beta^2}\frac{\delta^2 \log Z}{\delta B(\mathbf{x})B(\mathbf{y})}\vert_{B=0}\\ &amp;=\frac{1}{\beta^2}[\frac{\delta^2}{\delta B(\mathbf{x})\delta B(\mathbf{y})}(-\beta F_{\rm{thermo}} +\frac{\beta}{2}\int \frac{d^d k}{(2\pi)^d}  \frac{|B_{\mathbf{k}}|^2}{\gamma k^2 +\mu^2})]|_{B=0}\\ &amp;=\frac{1}{\beta^2}[\frac{\delta^2}{\delta B(\mathbf{x})\delta B(\mathbf{y})}(\frac{\beta}{2}\int \frac{d^d k}{(2\pi)^d} \frac{1}{\gamma k^2+\mu^2} \int d^d x d^d y B(\mathbf{x})e^{-i\mathbf{k}\cdot \mathbf{x}}B(\mathbf{y})e^{i\mathbf{k}\cdot \mathbf{y}})]|_{B=0}\\ &amp;=\frac{1}{\beta} G(\mathbf{x-y}) \end{split} \end{align}</code>
+其中在第三个等号求导时我们舍弃了第一项，并从动量空间返回位置空间，第四个等号完成了所有求导，并定义了函数
+$$\begin{align}
+G(\mathbf{x})=\int \frac{d^d k}{(2\pi)^d} \frac{e^{-i\mathbf{k}\cdot\mathbf{x}}}{\gamma k^2 +\mu^2}
+\end{align}$$
+这其实是一个 Green 函数。<code>$G(\mathbf{x-y})$</code> 描述了系统在 <code>$ \mathbf{x} $</code> 和 <code>$ \mathbf{y} $</code> 两点之间的相关性，或者说，如果在 <code>$ \mathbf{x} $</code> 处有一个微小扰动，<code>$ \mathbf{y} $</code> 处会如何响应。更一般地，它是方程
+$$\begin{align}
+(-\gamma\nabla^2_x +\mu^2) G(\mathbf{x},\mathbf{y})=\delta^d(\mathbf{x-y})
+\end{align}$$
+的解。在量子场论中，它被赋予了另一个名字——传播子（propagator）。</p>
+<h3 id="23-关联长度是涨落的特征尺度">2.3 关联长度是涨落的特征尺度</h3>
+<p>式 (16) 给出的 Green 函数仍然是一个傅里叶积分的形式，无法直接地理解其在位置空间的物理图像，我们可以先采取一些技巧近似地计算它的结果。首先，注意到自变量 <code>$\mathbf{x}$</code> 只在内积 <code>$\mathbf{k\cdot x}=|\mathbf{k}||\mathbf{x}|\cos\theta$</code> 中以模长的形式出现，则 <code>$G(\mathbf{x})=G(|\mathbf{x}|)=G(r)$</code>。稍微改写一下分母，有
+$$\begin{align}
+G(r)=\frac{1}{\gamma}\int \frac{d^d k}{(2\pi)^d} \frac{e^{-i\mathbf{k}\cdot\mathbf{x}}}{k^2 +1/\xi^2}
+\end{align}$$
+其中引入了关联长度 <code>$\xi^2=\frac{\gamma}{\mu^2}$</code>。</p>
+<p>利用积分 <code>$\frac{1}{k^2+1/\xi^2}=\int_{0}^{\infty} dt e^{-t(k^2+1/\xi^2)}$</code>，我们可以将上式改写为
+<code>\begin{align} \begin{split} G(r) &amp;= \frac{1}{\gamma} \int \frac{d^d k}{(2\pi)^d} \int_0^\infty dt \, e^{-i\mathbf{k} \cdot \mathbf{x} - t(k^2+1/\xi^2)} \\ &amp;= \frac{1}{\gamma} \int \frac{d^d k}{(2\pi)^d} \int_0^\infty dt \, e^{-t(\mathbf{k}+i\mathbf{x}/2t)^2} e^{-r^2/4t - t/\xi^2} \\ &amp;= \frac{1}{\gamma(4\pi)^{d/2}} \int_0^\infty dt \, t^{-d/2} e^{-r^2/4t - t/\xi^2} \end{split} \end{align}</code>
+这仍然沿用了配方为高斯型积分的思想。其中最后一行利用了
+<code>\begin{align} \begin{split} \int d^dk e^{-t(\mathbf{k}+i\mathbf{x}/2t)^2}&amp;=\int d^d k\, e^{-t(k_1 + ix_1/2t)^2} \cdots e^{-t(k_d + ix_d/2t)^2}\\ &amp;=(\int dk_1\, e^{-t(k_1 + ix_1/2t)^2}) \cdots (\int dk_d\, e^{-t(k_d + ix_d/2t)^2})\\ &amp;=(\sqrt{\frac{\pi}{t}})^d=\pi^{d/2}t^{-d/2} \end{split} \end{align}</code>
+这样式 (19) 中剩下的部分通过替换变量（提示：令 <code>$t_{new}=t/A$</code>，代入构造相同的指数形式），可以与第二类修正 Bessel 函数
+<code>\begin{align} K_\nu(z)=\frac{1}{2}\int_0^\infty dt\, t^{\nu-1} e^{-z(t+1/t)/2} \end{align}</code>
+相关联，完整的结果是
+<code>\begin{align} G(r) = \frac{1}{\gamma(4\pi)^{d/2}} \cdot 2 \left(\frac{r\xi}{2}\right)^{1-d/2} K_{1-d/2}\left(\frac{r}{\xi}\right) \end{align}</code>
+<del>然后放心地把问题交给数学家处理。</del>
+然而我们所感兴趣的物理并不需要计算这么完整的特殊函数行为，只需要研究某些极限下的近似。我们将 Green 函数写为
+<code>\begin{align} G(r)\sim \int^\infty_0 dt\, e^{-S(t)} \text{  with  } S(t)=\frac{r^2}{4t}+\frac{t}{\xi^2}+\frac{d}{2}\log t \end{align}</code>
+令 <code>$S'(t_*)=0$</code>，解出鞍点 <code>$t_*=\frac{\xi^2}{2}(-\frac{d}{2}+\sqrt{\frac{d^2}{4}+\frac{r^2}{\xi^2}})$</code>。在鞍点附近展开 <code>$S(t)$</code> 得
+<code>\begin{align} G(r) \sim \int_0^\infty dt \, e^{-S(t_*)-S^{''}(t_*)t^2/2}=\sqrt{\frac{\pi}{2S^{''}(t_*)}} e^{-S(t_*)} \end{align}</code>
+其中再次利用了高斯积分。我们分两类情况讨论这个结果：</p>
+<ul>
+<li><code>$r\gg \xi$</code>：两点之间的距离远大于关联长度。此时鞍点 <code>$t_*\approx r\xi/2$</code>，则 <code>$S(t_*)\approx r/\xi +(d/2)\log (r\xi/2)\text{, } S^{''}(t_*)\approx 4/r\xi^3$</code>，将一系列的结果代入式 (24) 得到在长程下指数衰减的 Green 函数
+<code>\begin{align} G(r)\sim \frac{1}{\xi^{d/2-3/2}}\frac{e^{-r/\xi}}{r^{d/2-1/2}} \text{ ,   } r\gg \xi \end{align}</code></li>
+<li><code>$r\ll \xi$</code>：两点之间的距离远小于关联长度。此时鞍点 <code>$t_*\approx r^2/2d$</code>，则 <code>$S(t_*)\approx d/2+(d/2)\log(r^2/2d)\text{, } S^{''}(t_*)\approx 2d^3/r^4$</code>，将一系列的结果代入式 (24) 得到在短程下幂律衰减的 Green 函数
+<code>\begin{align} G(r)\sim \frac{1}{r^{d-2}} \text{ ,   } r\ll \xi \end{align}</code></li>
+</ul>
+<p>我们发现关联函数在距离 <code>$r\sim \xi$</code> 时改变了衰减的形式，总结起来是
+<code>\begin{align} \langle \phi(\mathbf{x}) \phi(\mathbf{y}) \rangle \sim \begin{cases} \frac{1}{r^{d-2}} &amp; r \ll \xi \\ \frac{e^{-r/\xi}}{r^{(d-1)/2}} &amp; r \gg \xi \end{cases} \end{align}</code>
+这被称为 Ornstein-Zernicke correlation。当距离 <code>$r\gg \xi$</code> 时，所有的关联以指数衰减迅速消失。相反，对于 <code>$r\ll \xi$</code>，关联性只以一个缓慢的幂律衰减。从这个意义上说，<code>$\xi$</code> 暗示了涨落的特征尺度。或者说，在一个给定的热力学系综中，会有一些区域的磁化强度略高于或略低于平均值，这些区域的大小通常不会大于 <code>$\xi$</code>。</p>
+<p>我们回想起在临界点附近 <code>$\mu^2 \sim |T-T_c|$</code>，这意味着当我们接近临界点时，关联长度 <code>$\xi=\sqrt{\gamma/\mu^2}$</code> 的变化规律是
+<code>\begin{align} \xi \sim \frac{1}{|T-T_c|^{1/2}} \end{align}</code>
+关联长度在临界点发散！这表明系统在临界附近具有任意尺度的涨落，甚至在宏观尺度上也展现出长程关联，这正是二级相变的体现。下面显示了 Ising 模型在不同温度下的涨落图像。</p>
+<p><figure><img src="/post/statfield1/ht.png"><figcaption>
+      <h4>Figure 1: 高温下的涨落</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/post/statfield1/lt.png"><figcaption>
+      <h4>Figure 2: 低温下的涨落</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/post/statfield1/ct.png"><figcaption>
+      <h4>Figure 3: 临界温度下的涨落</h4>
+    </figcaption>
+</figure>
+</p></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://arapoken.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://arapoken.github.io/css/toc.css' />
+
+  
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='https://arapoken.github.io/css/gitalk.css'>
+<script src='https://arapoken.github.io/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Ov23ligONInfKNLN9RH6',
+    clientSecret: '9fc687a011bb6375cbe71f82a793446d0d09b75d',
+    repo: 'mysite-comment',
+    owner: 'arapoken',
+    admin: ['arapoken'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://arapoken.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+
+</body>
+
+<script type="application/javascript" src="https://arapoken.github.io/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"
+  integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"
+  integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+  integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+<script type="application/javascript" src='https://arapoken.github.io/js/search.js'></script>
+
+
+
+</html>

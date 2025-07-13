@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://arapoken.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://arapoken.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/syntax.css' />
+    <title>StatPhy1 - Cluster Expansion - arapoken@kitty314:~$</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/Chibimitaclear.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    <link rel="stylesheet" href="https://arapoken.github.io/css/custom.css">
+    <script type="text/javascript" src="https://arapoken.github.io/js/custom.js"></script>
+
+    
+    <meta name="description"
+  content="Lecture notes from David Tong - Statistical Physics
+" />
+<meta name="keywords"
+  content='blog, google analytics' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://arapoken.github.io/post/statphy1/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="StatPhy1 - Cluster Expansion - arapoken@kitty314:~$" />
+<meta name="twitter:description"
+  content="Lecture notes from David Tong - Statistical Physics
+" />
+<meta name="twitter:site" content="https://arapoken.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://arapoken.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="StatPhy1 - Cluster Expansion - arapoken@kitty314:~$">
+<meta property="og:description"
+  content="Lecture notes from David Tong - Statistical Physics
+" />
+<meta property="og:url" content="https://arapoken.github.io/post/statphy1/" />
+<meta property="og:site_name" content="StatPhy1 - Cluster Expansion" />
+<meta property="og:image"
+  content="https://arapoken.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2025-03-14 00:38:48 &#43;0800 &#43;0800" />
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.min.js" defer></script>
+
+<script defer
+  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+</head>
+
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://arapoken.github.io/">
+        <img class="octicon" height="32" width="32" src="/images/mutsumi9.png">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          
+          <form target="_blank" id="search-form" action="" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+            </label>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://arapoken.github.io/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="/images/mutsumi9.png">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
+</div>
+
+  
+<div class="application-main">
+  <div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://arapoken.github.io/">
+                  <img class=" avatar-user"
+                    src="/images/kkr.jpg"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://arapoken.github.io/"></a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="https://arapoken.github.io/post/statphy1/">StatPhy1 - Cluster Expansion</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 14 Mar 2025 00:38:48 &#43;0800"
+                    class="no-wrap">
+                    Fri, 14 Mar 2025 00:38:48 &#43;0800</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Sun, 13 Jul 2025 03:34:53 &#43;0000"
+                    class="no-wrap">
+                    Sun, 13 Jul 2025 03:34:53 &#43;0000</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      5004 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>Lecture notes from David Tong - <a href="https://www.damtp.cam.ac.uk/user/tong/statphys.html">Statistical Physics</a></p>
+<h2><img src="93660470_p0.jpg" alt=""></h2>
+<h2 id="统计力学中的团簇展开--图形化的计算方法">统计力学中的团簇展开 —— 图形化的计算方法</h2>
+<h2 id="1-introduction">1 Introduction</h2>
+<p><strong>&ldquo;Statistical mechanics is the art of turning the microscopic laws of physics into a description of Nature on a macroscopic scale.&rdquo; - David Tong</strong></p>
+<h3 id="11-为什么需要统计力学">1.1 为什么需要统计力学？</h3>
+<p>假设你破解了全部的物理学原理，知道了自然界的所有基本定律、基本粒子的特性以及它们之间的相互作用力，你该如何将这些知识转化成对你所处周围世界的理解？更具体地讲，假如有一个包含 <code>$ 10^{23} $</code> 个粒子的盒子，已知它们的质量、电荷和相互作用，关于盒子本身，你能告诉我什么信息？</p>
+<p>Newton 和 Schrödinger 分别赐予了我们经典与量子情况下的粒子动力学方程，但是不论何种，对我们（包括人类与计算机）的有限算力来讲，联立 <code>$ 10^{23} $</code> 个方程并尝试去解，是最坏也最不可能的策略。而且就算解出了运动轨迹/波函数，我们仍然无法截然宣称，这个盒子是热的还是冷的，是软的还是硬的？盒子会爆炸吗，还是会在下一秒坍缩成黑洞？<strong>丰富的微观信息并没有给我们带来肯定的宏观答案</strong>，因为真正的宏观系统不是由一个纯量子态描述的。它与环境接触，不断受到外部影响和冲击，每次系统经历一个小的扰动，就有可能转换到另一种状态。我们需要一个将微观、宏观联系起来的理论，一个放之四海而皆准的定则。它将告诉我们，统计不同于掰手指头数数，而是有趣的 LEGO 积木游戏，把零碎的片段，拼成完美的城堡。</p>
+<h3 id="12-统计力学从何而来往何处去">1.2 统计力学从何而来，往何处去？</h3>
+<p>从1600年代到1900年代，科学家们不断发现着表现在不同物质上的统一的物理规律，比如我们熟知的 Boyle 定律（<code>$ p \propto \frac{1}{V} $</code>）、 Charles 定律（<code>$ V \propto T $</code>）和 Curie 定律（<code>$ \chi \propto \frac{1}{T} $</code>）等。它将我们所感兴趣的宏观性质联系在一起，也隐含了物理学的一条重要信息——<strong>普适性（Universality）</strong>。不同物质的宏观性质有着相同规律，直觉上可以猜想它们来源于同一微观性质，因为那时一些人们认为，物质在微观上的组成是几乎一致的。经典热力学的成功没有掩盖 Ludwig Boltzmann 对微观、宏观联系的洞察力，他同时也是原子论的坚定捍卫者：“如果原子不存在，那么如何解释热现象？”基于原子论的观点， Boltzmann 发展了统计方法，奠定了现代统计力学的基础。</p>
+<p>我国统计物理的先驱，郝柏林先生说:“统计物理学既是物理学，又是方法论。”从个例总结出一般规律、再去研究个例，是一切自然科学的方法基础。同时，现代统计物理不仅仅包含 Boltzmann 的统计力学，它并不偏倚还原论或是整体论，而是从 <strong>对称性（Symmetry）</strong> 和 <strong>尺度（Scaling）</strong> 出发，考察不同尺度的现象和本质，为研究相变和临界现象提供手段。例如，我们注意到，小的事物往往会影响大的事物，但很少影响非常大的事物；沿着关系链爬升，我们似乎会遗忘很小尺度上的事情。研究椋鸟成群飞行的动物学家无需理解 Higgs 玻色子的动力学，每个尺度各有分工，<strong>重整化群（Renormalisation Group）</strong> 就是这样作为一个 formalism 的理论被提出。这不是本讲义讨论的主要内容，但会给我们带来思想上的启发。</p>
+<h2 id="2-统计物理的基本假设">2 统计物理的基本假设</h2>
+<h3 id="21-基本概念和假设">2.1 基本概念和假设</h3>
+<p>统计物理通过研究大量微观粒子的统计行为，来解释宏观物理现象。为了描述这种联系，我们需要事先引入两个关键概念和两大基本假设：</p>
+<ul>
+<li>
+<p>微观态（Microstate）：微观态 <code>$ \omega_i\in\Omega=\{\omega_1,\omega_2,\dots\} $</code> 是对一个物理系统在<strong>某一时刻</strong>所有<strong>微观自由度</strong>（如粒子的位置、动量、量子态等）的<strong>完整描述</strong>。在经典力学中是相空间 <code>$ \{(\boldsymbol q,\boldsymbol p )\} $</code> 中的一个6N维向量 <code>$ (q_1,q_2,\dots,q_N;p_1,p_2,\dots,p_N) $</code> ；在量子力学中是系统的态矢量 <code>$ \vert \psi \rangle $</code> 或波函数 <code>$ \psi $</code>。</p>
+</li>
+<li>
+<p>系综（Ensemble）：系统在<strong>一定宏观约束条件</strong>下能够实现的<strong>微观态</strong>（也称<strong>可访问态（accessible state）</strong>）构成的一个<strong>集合</strong>。可以分为</p>
+</li>
+<li>
+<p>微正则系综 <code>$$  \varepsilon_{micro}=\{\omega_i\in\Omega\vert E(\omega_i)=E, V(\omega_i)=V,N(\omega_i)=N\}  $$</code></p>
+</li>
+<li>
+<p>正则系综 <code>$$ \varepsilon_{canonical} =\{\omega_i\in\Omega\vert V(\omega_i)=V,N(\omega_i)=N\} $$</code></p>
+</li>
+<li>
+<p>巨正则系综 <code>$$ \varepsilon_{grand} =\{\omega_i\in\Omega\vert V(\omega_i)=V\} $$</code></p>
+</li>
+<li>
+<p>等概率（Equal-probability）假设：对处于平衡态（宏观量不再变化）的孤立系统，所有可访问的微观态的可能性都相同。</p>
+</li>
+<li>
+<p>遍历（Ergodic）假设：在足够长的时间内，一个系统会以相同的机会访问其状态空间中的所有微观态。这意味着系统的时间平均与系综平均等价。</p>
+</li>
+</ul>
+<p>例如，一个具有2个可分辨粒子的系统，限定每个粒子的自旋只能向上或向下（1或-1），总共有 <code>$ 2^2 $</code> 个可能的微观态，即(-1,-1),(-1,1),(1,-1),(1,1)，能量 <code>$ E=J\cdot S $</code> 分别为{-2,0,0,2}，假设访问每个微观态所用的时间为 <code>$ \Delta t $</code> ，能量的时间平均就是 <code>$ \langle E \rangle_{\rm{time}}=\frac{-2\cdot\Delta t+0+0+2\cdot\Delta t}{4\cdot\Delta t}=0 $</code> ；而系综平均是 <code>$ \langle E \rangle_{\rm{ensemble}}=\frac{-2+0+0+2}{2^2}=0 $</code> 。</p>
+<p>这些假设奠定了从微观描述推导宏观性质的基础。</p>
+<h3 id="22-系统的可观测量">2.2 系统的可观测量</h3>
+<p>在一般的物理系统中，可观测量由算符 <code>$ \hat{\mathcal{O}} $</code> 表示，有 <code>$ \langle \hat{\mathcal{O}}\rangle = \sum_n p(n) \langle n \vert \hat{\mathcal{O}}\vert n \rangle  $</code>。其中 <code>$ p(n) $</code> 是第 <code>$ n $</code> 个微观态对应的概率，<code>$ \langle n \vert \hat{\mathcal{O}}\vert n \rangle $</code> 是在该状态下观测到的值。因此，要从宏观上理解 <code>$ \hat{\mathcal{O}} $</code> 的物理性质，我们必须搞清楚<strong>微观态的分布 <code>$ p(n) $</code></strong>。</p>
+<h3 id="23-正则系综的微观态分布">2.3 正则系综的微观态分布</h3>
+<p>正则系综，即系统能够与一个大的热库（hot reservoir）达到平衡的情况，其粒子数N,体积V,温度T固定。给定 NVT 的值，我们可以唯一确定微观态的分布情况 <code>$ P_i=P(E_i) $</code>。这里通过拉格朗日乘子法和最大熵原理推导它的形式，由约束条件：</p>
+<ul>
+<li>归一化条件: $$\sum_i p_i = 1 $$</li>
+<li>宏观能量不再变化: $$\sum_i p_i E_i = \langle E \rangle$$</li>
+</ul>
+<p>以及 Gibbs 熵的定义 <code>$ S=-k_B\sum_ip_i\ln p_i $</code>。构造拉格朗日函数：
+$$\mathcal{L}= -\sum_i p_i \ln p_i -\alpha(\sum_i p_i-1)-\beta(\sum_i p_i E_i -\langle E\rangle)$$
+要使得熵 <code>$ \frac{S}{k_B}=\mathcal{L} $</code> 最大，则对每个 <code>$ p_i $</code> 求偏导且令其为0：
+$$\frac{\partial \mathcal{L} }{\partial p_i} = -(1+\ln p_i)-\alpha-\beta E_i =0$$
+解得$$p_i=\frac{e^{-\beta E_i}}{e^{\alpha+1}}\propto e^{-\beta E_i}$$
+这就是 Boltzmann 分布，定义其中 <code>$ \beta=\frac{1}{k_B T} $</code>。对概率进行归一化，我们得到
+<code>$$ P_i = \frac{e^{-\beta E_i}}{\sum_i e^{-\beta E_i}} = \frac{e^{-\beta E_i}}{Z} $$</code>
+<code>$ Z $</code> 称为<strong>配分函数（Partition function）</strong>。当 <code>$ E_i=E\text{, }i=1,2,\dots,n $</code> 时，<code>$ P_i=\frac{1}{n} $</code>，所有微观态的概率相同，退化为微正则系综的微观态分布。考虑粒子数可变的情况，则在 <code>$ E $</code> 上加一项 <code>$ -\mu N_i $</code> 表示将粒子放入系统后的能量改变量，得到巨正则系综的微观态分布 <code>$ P_i=\frac{e^{-\beta (E_i-\mu N_i)}}{\mathcal{Z}} $</code>。</p>
+<h2 id="3-配分函数partition-function">3 配分函数（Partition function）</h2>
+<p>配分函数不仅仅是一个归一化因子，而包含了物理系统的全部热力学信息。
+<code>$$\begin{align*} Z&amp;=\sum_i e^{-\beta E_i}\\ \mathcal{Z}&amp;=\sum_{i} e^{\beta \mu N_i}e^{-\beta E_i}=\sum_{i}z^{N_i} e^{\beta E_i} \end{align*}$$</code>
+对于已经写出配分函数的系统，可以用 <strong><code>$ \beta $</code> trick</strong> 来获得一系列宏观可观测量。例如</p>
+<p><code>$$\begin{align*} \langle E\rangle&amp;=\sum_i P_i E_i=\frac{E_i e^{-\beta E_i}}{Z}= -\frac{d\ln Z}{d\beta}\\ \langle N\rangle&amp;=\sum_i P_i N_i=\frac{N_i e^{-\beta (E_i-\mu N_i)}}{\mathcal{Z}}= \frac{1}{\mu}\frac{d\ln \mathcal{Z}}{d\beta} \end{align*}$$</code></p>
+<h3 id="31-from-quantum-to-classical">3.1 From Quantum to Classical</h3>
+<p>以上介绍的是量子化的配分函数，系统只能取分立的能级，但我们可以相信的是：量子世界永不落后。我们一定可以从量子的情况推导经典系统中的连续配分函数
+$$\begin{align}
+Z_1=\frac{1}{(2\pi\hbar)^3}\int d^3qd^3p e^{-\beta H(p,q)}
+\end{align}$$
+首先，系统的哈密顿量由 <code>$ \hat{H}=\frac{\hat{p}^2}{2m}+V(\hat{q}) $</code> 给出，写出其配分函数
+<code>$$ Z_1=\sum_n e^{-\beta E_n}=\sum_n\langle n\vert e^{-\beta \hat{H}} \vert n \rangle $$</code>
+插入两个恒等元 <code>$ \boldsymbol{1} = \int dq \vert q \rangle \langle q \vert $</code> 和 <code>$ \boldsymbol{1} = \int dp \vert p \rangle \langle p \vert $</code>，得到
+<code>$$\begin{align*} Z_1 &amp;=\sum_n \langle n \vert  \int dq \vert q \rangle \langle q \vert e^{-\beta \hat{H}}  \int dq' \vert q' \rangle \langle q' \vert n \rangle \\ &amp;= \int dq dq' \langle q \vert e^{-\beta \hat{H}} \vert q'\rangle \sum_n \langle q' \vert n \rangle \langle n\vert q \rangle \end{align*}$$</code>
+其中 <code>$ \sum_n \vert n \rangle \langle n \vert = \boldsymbol{1} $</code>也是恒等元，<code>$ \langle q'\vert q\rangle =\delta(q'-q) $</code> 是 <code>$ \delta $</code> 函数。原式可以化简成为</p>
+<p>$$\begin{equation}
+Z_1=\int dq\langle q \vert e^{-\beta \hat{H}}\vert q \rangle
+\end{equation}$$</p>
+<p>到此为止我们完成了配分函数“对能量本征态求和”到“对位置本征态求积分”的转变。事实上，我们可以选择任何想要的本征态作为基底，也可以写成独立于基底的形式：<code>$ Z_1 = \rm{Tr }\text{ } e^{-\beta \hat{H}} $</code>。</p>
+<p>那么该如何向经典世界靠拢呢？令 <code>$ [\hat{q},\hat{p}]=i\hbar \rightarrow 0 $</code>，就得到指数项的分离形式 <code>$$  e^{-\beta \hat{H}}=e^{-\beta \hat{p}^2/2m} e^{-\beta V(\hat{q})} +\mathcal{O}(\hbar) $$</code>
+再代入式(2)并忽略 <code>$ \mathcal{O}(\hbar) $</code> 项，注意这里符号上尖的细微差别</p>
+<p><code>$$\begin{align} \begin{split} Z_1&amp;=\int dq\langle q \vert e^{-\beta \hat{p}^2/2m} e^{-\beta V(\hat{q})}\vert q \rangle\\ &amp;=\int dq e^{-\beta V(q)}\langle q\vert e^{-\beta \hat{p}^2/2m}\vert q \rangle\\ &amp;=\int dq dp dp' e^{-\beta V(q)}\langle q\vert p\rangle\langle p \vert e^{-\beta \hat{p}^2/2m}\vert p'\rangle \langle p' \vert q\rangle\\ &amp;=\frac{1}{2\pi \hbar}\int dq dp e^{-\beta H(p,q)} \end{split} \end{align}$$</code></p>
+<p>倒数第二步仍然是恒等元的插入，最后一步则利用了Fourier变换等式 <code>$ \langle q\vert p\rangle=\frac{1}{2\pi \hbar}e^{ipq/\hbar} $</code>。</p>
+<p>这是一维形式的结果，很容易推广至三维，也就是式 (1)。式中包含的常数大小并不重要，只要它的单位恰好能满足 <code>$ Z $</code> 是无量纲常数。而写成 <code>$ \hbar $</code> 可以提醒我们，这个式子是由量子情况过渡过来的。拥有了连续版本的配分函数，我们就可以愉快地处理接下来的相互作用气体（Interacting Gas）了。</p>
+<h2 id="4-团簇展开cluster-expansion">4 团簇展开（Cluster Expansion）</h2>
+<h3 id="41-真实气体的配分函数">4.1 真实气体的配分函数</h3>
+<p>对于理想气体（无相互作用），哈密顿量只包含动能项 <code>$ H=\sum_{i=1}^N \frac{p_i^2}{2m} $</code>，代入配分函数，很容易积分得到
+<code>$$\begin{align*} Z_1&amp;=\frac{1}{(2\pi\hbar)^3}\int d^3q d^3p e^{-\beta p^2/2m} \\ &amp;=V(\frac{mk_BT}{2\pi \hbar^2})^{3/2}\\ Z_N&amp;= \frac{Z_1^N}{N!} =\frac{V^N}{N!\lambda^{3N}} \end{align*}$$</code>
+其中 <code>$ \lambda=(\frac{mk_BT}{2\pi \hbar^2})^{-1/2} $</code> 称为热波长。对于有相互作用 <code>$ U(r_{ij}) $</code> 的真实气体，哈密顿量是
+<code>$$ H=\sum_{i=1}^N \frac{p_i^2}{2m}+\sum_{i&gt;j} U(r_{ij}) $$</code>
+代入配分函数积分，可以写为
+<code>$$\begin{align*} Z_N &amp;= \frac{1}{N!}\frac{1}{(2\pi \hbar)^{3N}} \int \prod_{i=1}^N d^3 p_i e^{-\beta \sum_j p_j^2/2m}\int\prod_{i=1}^{N} d^3 r_i e^{-\beta \sum_{j&lt; k}{ U(r_{jk})}}\\ &amp;=\frac{1}{N!}\frac{1}{\lambda^{3N}}\int \prod_{i=1}^N d^3r_i e^{-\beta \sum_{j&lt; k}{ U(r_{jk})}} \end{align*}$$</code>
+相比理想气体即 <code>$ U(r_{ij})=0 $</code> 的情况，我们无法直接从积分项中提取出有如体积 <code>$ V =\int d^3r $</code> 这样显而易见的信息。也许可以寄希望于 Taylor 展开：
+$$\begin{align*}
+e^{-\beta \sum_{j&lt; k}{ U(r_{jk})}}=1-\beta \sum_{j&lt;k} U(r_{jk})+\frac{\beta^2}{2}\sum_{j&lt;k,l&lt;m} U(r_{jk})U(r_{lm})+\cdots
+\end{align*}$$
+在 <code>$ \beta U\ll 1 $</code> 时，这自然是一个很好的展开，也对应于高温或近理想气体的行为。可是当我们考察偏离理想的情况，例如 <code>$ r\rightarrow 0\text{ 时，}U(r_{ij})\rightarrow \infty $</code>，展开式将发散，高阶项将越来越大。在此引入 <strong>Mayer f-function</strong>：
+<code>$$ f(r)=e^{-\beta U(r)}-1 $$</code>
+可以发现 <code>$ r\rightarrow \infty \text{ 时，}f(r)\rightarrow 0\text{，}r \rightarrow 0\text{ 时，}f(r)\rightarrow -1 $</code>，<code>$ f_{ij} $</code>是一个能使展开式收敛的好参量，我们计算时可以随时忽略高阶项。同时为了方便我们定义 <code>$ f_{ij}=f(r_{ij}) $</code>，从而配分函数可以写为
+<code>$$\begin{align} \begin{split} Z_N &amp;=\frac{1}{N!}\frac{1}{\lambda^{3N}}\int \prod_{i=1}^N d^3r_i \prod_{j&lt;k}(1+f_{jk})\\ &amp;=\frac{1}{N!}\frac{1}{\lambda^{3N}}\int \prod_{i=1}^N d^3r_i (1+\sum_{j&lt;k}f_{jk} +\sum_{j&lt;k,l&lt;m} f_{jk}f_{lm}+\cdots)  \end{split} \end{align}$$</code>
+可以看到，第一项 <code>$ \boldsymbol{1} $</code> 的积分后即 <code>$ \int \prod_{i=1}^N d^3r_i=V^{N} $</code>，结果是理想气体配分函数 <code>$ Z_{ideal}=\frac{V^N}{N!\lambda^{3N}} $</code>。形如第二项 <code>$ \boldsymbol{f_{jk}} $</code> 的积分是
+<code>$$ \int \prod_{i=1}^N d^3r_i f_{12}=V^{N-2}\int d^3r_1 d^3 r_2 f(r_{12})=V^{N-1}\int d^3r f(r) $$</code>
+最后的等号作了 <code>$ r=r_1-r_2 $</code> 的代换。总共有 <code>$ N(N-1)/2\approx \frac{N^2}{2} $</code> 个这样的项求和，结果是
+<code>$$ Z^{(1)} = \frac{V^{N}}{N!\lambda^{3N}} \frac{N^2}{2V}\int d^3r f(r)=Z_{ideal}\frac{N^2}{2V}\int d^3r f(r) $$</code>
+同理可以继续往下算下去，不过计算高阶项的时候，有趣的事情发生了：我们可以用图形化的计算方法，来让计算变得更加简单，形式更加优美。</p>
+<h3 id="42-图形化的计算方法">4.2 图形化的计算方法</h3>
+<p>我们注意到式(4)的表达式有一个特点，那就是形如  <code>$ f_{ij}f_{kl}f_{mn}\dots $</code> 的组合项，在整个求和中具有<strong>唯一性</strong>，且不管两两之间是否存在单个指标相同，整个项绝不会包含两个指标完全相同的因子，即<strong>双指标的不重复性</strong>。我们可以用<strong>图</strong>来定义这种规则：</p>
+<ul>
+<li>在纸上画出 <code>$ N $</code> 个原子（请放心，我们不用真的画出 <code>$ 10^{23} $</code> 数量级别的原子，在之后我们会将它们分解为一系列小的子图）。</li>
+<li>用线段连接项 <code>$ f_{ij}f_{kl}f_{mn}\dots $</code> 中的指标对应的原子，即连接 <code>$ (i,j), (k,l),(m,n)\dots $</code>等。</li>
+</ul>
+<figure><img src="/post/statphy1/1.png"><figcaption>
+      <h4>Figure 1:图中显示了 N=4 的几个子图，分别代表不同的组合项</h4>
+    </figcaption>
+</figure>
+
+<p>这样的规则之下，我们已经得到的配分函数式(4)可以看作是对所有的子图求和然后积分，或是对所有的子图积分然后求和。我们把对子图 <code>$ G $</code> 的积分写作 <code>$ W[G] $</code> ，那么式(4)可以重新写成：
+$$\begin{equation}
+Z_N =\frac{1}{N!\lambda^{3N}}\sum_{G} W[G]
+\end{equation}$$</p>
+<figure><img src="/post/statphy1/2.png"><figcaption>
+      <h4>Figure 2: N=5 的子图积分，可以分解成一个 3-cluster 和 2-cluster 的乘积</h4>
+    </figcaption>
+</figure>
+
+<p>绝大部分子图具有不连通的部分，如图(1)的 <code>$ f_{12}f_{34} $</code> 组合项，这样的项显然可以分解为更小的子图积分的乘积。我们把各个内部连通的部分叫做<strong>团簇（clusters）</strong>，具有 <code>$ l $</code> 个原子的团簇称为 <code>$ l-cluster $</code>。<code>$ N $</code> 个原子的子图 <code>$ G $</code> 可以被分为 <code>$ m_l $</code> 个 <code>$ l-clusters $</code>，即
+$$\begin{equation}
+\sum_l^N m_l l=N
+\end{equation}$$
+有了 clusters 的存在，我们就有办法去处理更大规模的图。先考虑 3-cluster：</p>
+<figure><img src="/post/statphy1/3.png"><figcaption>
+      <h4>Figure 3: 3-cluster，总共包含四种不同的连通子图</h4>
+    </figcaption>
+</figure>
+
+<p>每个 3-cluster 会作为一类乘积因子 <code>$ U_3 $</code> 出现在配分函数的各个组合项中，不管与它们组合的 <code>$ N-3 $</code> 个原子构成的子图如何。并且由于组合项的唯一性，每个 cluster 只被计算一次：</p>
+<figure><img src="/post/statphy1/4.png">
+</figure>
+
+<p>一般地，对 <code>$ l-cluster $</code> 也可以写出乘积因子 <code>$$ U_l=\int \prod_{i=1}^l d^3r_i \sum_{G\in\{l-cluster\}} G $$</code>
+那么，整个配分函数就可以写成一系列 <code>$ U_l $</code> 的乘积，其中 <code>$ \{m_l\} $</code> 是满足约束关系式(6)的各种可能的组合。
+<code>$$ \sum_G W[G]=N!\sum_{\{m_l\}} \prod_l \frac{U_l^{m_l}}{(l!)^{m_l}m_l!} $$</code></p>
+<p>其中 <code>$ N! \prod_l \frac{1}{(l!)^{m_l}m_l!} $</code> 项表示将子图 <code>$ G $</code> 分割为一系列 <code>$ m_l $</code> 个 <code>$ l-clusters $</code> 的组合数。</p>
+<figure><img src="/post/statphy1/5.png"><figcaption>
+      <h4>Figure 5: 可以验证，对于 `N=5, m_2=1,m_3=1` 的情况，只包含 `U_3 U_2` 项，并且系数应当是 `\frac{5!}{3!2!}=10`；从另一方面理解，我们只需要决定 5 个原子中哪两个位于右侧的 2-cluster，这样的组合数恰好为10</h4>
+    </figcaption>
+</figure>
+
+<p>因此，最终的配分函数形式是
+$$\begin{equation}
+Z_N=\frac{1}{\lambda^{3N}}\sum_{{m_l}}\prod_l  \frac{U_l^{m_l}}{(l!)^{m_l}m_l!}
+\end{equation}$$</p>
+<p>但是我们还不能满足的一点是，这样写出来的配分函数仍要考虑约束条件(6)下的各种可能性，这是很麻烦的，如果我们没有约束该多好！为了获得粒子数不受约束的情况，我们要从正则系综跳出，前往巨正则系综（可以证明，在热力学极限 <code>$  N\rightarrow \infty,V\rightarrow \infty,N/V\rightarrow const. $</code> 的情况下，正则系综和巨正则系综等价）
+<code>$$ \mathcal{Z}=\sum_{N}e^{\beta \mu N}Z_N $$</code>
+定义逸度（fugacity）<code>$ z=e^{\beta \mu} $</code>。然后我们就可以得到进一步简化的表达式
+<code>$$ \mathcal{Z}=\sum_{N}z^{N}Z_N=\sum_{m_l=0}^\infty \prod_{l=1}^\infty (\frac{z}{\lambda^3})^{m_l l} \frac{1}{m_l !} (\frac{U_l}{l!})^{m_l} =\prod_{l=1}^{\infty} \exp(\frac{U_l z^l}{\lambda^{3l}l!}) $$</code></p>
+<p>继续定义 <code>$ b_l=\frac{\lambda^3}{V}\frac{U_l}{l!\lambda^{3l}} $</code> ，则配分函数变为
+<code>$$ \mathcal{Z}=\prod_{l=1}^{\infty} \exp(\frac{V}{\lambda^3}b_l z^l)=\exp(\frac{V}{\lambda^3}\sum_{l=1}^\infty b_l z^l) $$</code></p>
+<p>从而，对所有子图可能的分割求和，被我们重新写成了对所有团簇的求和，这就是<strong>团簇展开（cluster expansion）</strong>。图形化的计算是统计力学和量子场论中的一种相当自然的 <strong>trick</strong>，两者都特别关注<strong>连通图</strong>，而在后者的领域中被称为<strong>费曼图（Feymann diagram）</strong>。</p>
+<p>在 Cluster Expansion 中，只有连通簇的贡献才不会重复计算，直接影响宏观物理量；而在 Feynman 图中，连通图对应于物理上不可分割的过程。虽然它们应用的具体领域和形式略有不同，这两种图形方法都为解析求解和数值模拟提供了直观且强有力的工具，使得复杂系统的多体相互作用能够被系统地整理与求和，有助于我们识别、理解各阶扰动贡献。</p></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://arapoken.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://arapoken.github.io/css/toc.css' />
+
+  
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='https://arapoken.github.io/css/gitalk.css'>
+<script src='https://arapoken.github.io/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Ov23ligONInfKNLN9RH6',
+    clientSecret: '9fc687a011bb6375cbe71f82a793446d0d09b75d',
+    repo: 'mysite-comment',
+    owner: 'arapoken',
+    admin: ['arapoken'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://arapoken.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+
+</body>
+
+<script type="application/javascript" src="https://arapoken.github.io/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"
+  integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"
+  integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+  integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+<script type="application/javascript" src='https://arapoken.github.io/js/search.js'></script>
+
+
+
+</html>

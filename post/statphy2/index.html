@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://arapoken.github.io/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://arapoken.github.io/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/github.min.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/github-style.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/light.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/dark.css' />
+    <link rel="stylesheet" href='https://arapoken.github.io/css/syntax.css' />
+    <title>StatPhy2 - Ising Model - arapoken@kitty314:~$</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/Chibimitaclear.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    <link rel="stylesheet" href="https://arapoken.github.io/css/custom.css">
+    <script type="text/javascript" src="https://arapoken.github.io/js/custom.js"></script>
+
+    
+    <meta name="description"
+  content="Lecture notes from David Tong - Statistical Physics
+" />
+<meta name="keywords"
+  content='blog, google analytics' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://arapoken.github.io/post/statphy2/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="StatPhy2 - Ising Model - arapoken@kitty314:~$" />
+<meta name="twitter:description"
+  content="Lecture notes from David Tong - Statistical Physics
+" />
+<meta name="twitter:site" content="https://arapoken.github.io/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://arapoken.github.io/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="StatPhy2 - Ising Model - arapoken@kitty314:~$">
+<meta property="og:description"
+  content="Lecture notes from David Tong - Statistical Physics
+" />
+<meta property="og:url" content="https://arapoken.github.io/post/statphy2/" />
+<meta property="og:site_name" content="StatPhy2 - Ising Model" />
+<meta property="og:image"
+  content="https://arapoken.github.io/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2025-05-02 12:10:48 &#43;0800 &#43;0800" />
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.min.js" defer></script>
+
+<script defer
+  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+</head>
+
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://arapoken.github.io/">
+        <img class="octicon" height="32" width="32" src="/images/mutsumi9.png">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          
+          <form target="_blank" id="search-form" action="" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+            </label>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://arapoken.github.io/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="/images/mutsumi9.png">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
+</div>
+
+  
+<div class="application-main">
+  <div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://arapoken.github.io/">
+                  <img class=" avatar-user"
+                    src="/images/kkr.jpg"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://arapoken.github.io/"></a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="https://arapoken.github.io/post/statphy2/">StatPhy2 - Ising Model</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 02 May 2025 12:10:48 &#43;0800"
+                    class="no-wrap">
+                    Fri, 02 May 2025 12:10:48 &#43;0800</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Sun, 13 Jul 2025 03:34:53 &#43;0000"
+                    class="no-wrap">
+                    Sun, 13 Jul 2025 03:34:53 &#43;0000</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      6412 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>Lecture notes from David Tong - <a href="https://www.damtp.cam.ac.uk/user/tong/statphys.html">Statistical Physics</a></p>
+<h2><img src="mortimutsu.jpg" alt=""></h2>
+<h2 id="ising-model平均场近似-vs-精确结果kw-duality">Ising Model：平均场近似 vs 精确结果；KW Duality</h2>
+<h2 id="1-introduction-to-phase-transition">1 Introduction to Phase Transition</h2>
+<p>相变是系统属性发生的突然的、不连续变化。除了常见的物体固、液、气三态变化，自然界还存在很多有趣的相变现象，例如加热一块磁铁，磁铁的铁磁性忽然消失，变成顺磁性；物质从金属变成超导体的超导相变，液氦从正常液体变成超流体的  <code>$ \lambda $</code> 相变，金属-绝缘体相变，量子相变等。这些相变往往伴随着系统对称性的变化、长程有序性的建立或消失，以及宏观物理性质（如电导率、磁化强度、比热等）的急剧、非解析的变化，这在普遍认为是光滑、解析的物理学中是很罕见的。</p>
+<p>更奇妙的是，不同系统在临界点附近也可能呈现相同的行为，表明了自然界复杂表面下存在的深层次的统一结构。探索这样的普适性，是物理学的目的之一。</p>
+<h3 id="11-气液相变的临界点">1.1 气液相变的临界点</h3>
+<figure><img src="/post/statphy2/1.png"><figcaption>
+      <h4>Figure 1: 气液相变的 p-v 曲线</h4>
+    </figcaption>
+</figure>
+
+<p>气液相变的 p-v 曲线由 van der Waals 方程
+$$p=\frac{k_B T}{v-b}-\frac{a}{v^2}$$
+给出，其中  <code>$ v=V/N $</code> 是单粒子体积。在不同温度下绘制出曲线如图 (1)，由于第一项和第二项的竞争关系，曲线的走势会有显著变化。在某个特定温度  <code>$ T=T_c $</code> 下，曲线将单调且仅有唯一拐点，即解方程组
+\begin{align}
+dp/dv=0 \text{, }d^2p/dv^2=0
+\end{align}
+得到 <code>$ k_BT_c=\frac{8a}{27b} $</code>。在  <code>$ T&gt;T_c $</code> 时，p-v 曲线单调递减，这与理想气体类似；而在  <code>$ T&lt;T_c $</code> 时，情况变得复杂起来，似乎加压反而使系统膨胀。尽管并不是真实的路径，它仍然描述了系统处于某种不同于气相的状态，后来我们知道这气液共存态；系统在这段压力范围内会维持恒压，放出潜热，最终变成液体。根据相平衡条件，我们还可以构建气液共存线和 p-T 相图，也可以发现有趣的过冷气体、过热液体等亚稳态的存在，但这不是我们今天要讨论的重点。</p>
+<p>方程组 (1) 不仅给出了临界温度，也解出了临界点的其他物理量 <code>$p_c=\frac{a}{27b^2}\text{, }v_c=3b$</code>。从而有 <code>$\frac{p_c v_c}{k_B T_c}=0.375$</code>，这是一个与 a,b 无关的常量。即使我们知道 van der Waals 方程仅仅是一种不太准确的模型，实验往往给出 0.28  <code>$ \sim $</code> 0.3 的值，它依然蕴含着我们寻找“普遍性”所必要的启示。更重要的是，有惊人的实验证据支持这一点。</p>
+<figure><img src="/post/statphy2/2.png"><figcaption>
+      <h4>Figure 2: 不同物质的气液共存曲线，横纵坐标分别为  `\rho/\rho_c` 和 `T/T_c`</h4>
+    </figcaption>
+</figure>
+
+<p>绘制 8 种不同物质的气液共存曲线如图 (2)。从简单的单原子气体  <code>$ Ne $</code> 到分子气体 <code>$ CH_4 $</code>，复杂程度各不相同的 8 种气体几乎在同一条曲线上。如你所见，化学组成在很大程度上被遗忘了。</p>
+<h3 id="12-临界指数与普适类">1.2 临界指数与普适类</h3>
+<p>我们将视线转移到临界指数的计算上来。我们关心在临界点附近，各种物理量如何变化。我们从不同方向接近临界点，并考察三个量：体积 <code>$v$</code>、压强 <code>$p$</code>、等温压缩率 <code>$\kappa$</code>。</p>
+<p>从  <code>$ T &lt; T_c $</code> 的方向趋近 <code>$T_c$</code>，气液共存的 van der Waals 方程可以用约化变量写为 <code>$$\overline{p}=\frac{8\overline{T}}{3\overline{v}_{liquid}-1}-\frac{3}{\overline{v}^2_{liquid}}=\frac{8\overline{T}}{3\overline{v}_{gas}-1}-\frac{3}{\overline{v}^2_{gas}}$$</code>
+由此解出 <code>$$\overline{T}=\frac{(3\overline{v}_{liquid}-1)(3\overline{v}_{gas}-1)(\overline{v}_{liquid}+\overline{v}_{gas})}{8\overline{v}_{gas}^2\overline{v}_{liquid}^2}$$</code>
+当  <code>$ T\rightarrow T_c $</code> 时，用小量  <code>$ \epsilon=v_{gas}-v_{liquid} $</code> 展开右侧，一种便捷的做法是令  <code>$ v_{gas}=1+\epsilon/2 $</code> 和 <code>$v_{liquid}=1-\epsilon/2$</code>，代入  <code>$ \overline{T} $</code> 并取领头阶，得到
+<code>$$\overline{T}\approx 1-\frac{1}{16}(\overline{v}_{gas}-\overline{v}_{liquid})^2$$</code>
+也可以重新组织为
+$$v_{gas}-v_{liquid}\sim (T_c-T)^{1/2}$$
+而对于压强，我们有方程组 (1)，则  <code>$ p-p_c $</code> 的最小阶只能是三阶
+$$ p-p_c \sim (v-v_c)^3 $$
+同理，由于  <code>$ \partial p/\partial v \vert_{T_c}=0 $</code> 在临界点附近也可以展开为
+$$\frac{\partial p}{\partial v} \vert_{T;v=v_c}=-a(T-T_c)+\dots$$
+有等温压缩率 <code>$$\kappa=-\frac{1}{v}\frac{\partial v}{\partial p}\vert_{T} \sim(T-T_c)^{-1}$$</code></p>
+<p>但是我们怎么可以轻易相信 van der Waals 方程在临界点附近是有效的呢？我们依然需要与实验确认后，才能击掌庆祝。临界点附近的气体的实验结果确实与理论计算有一个共同点，那就是它们完全不依赖气体的原子组成。然而理论计算给出的指数并不完全准确。正确的结果如下：</p>
+<ul>
+<li><code>$v_{gas}-v_{liquid}\sim (T_c-T)^{\beta}\text{ with } \beta \approx 0.32$</code></li>
+<li><code>$p-p_c \sim (v-v_c)^{\delta} \text{ with } \delta \approx 4.8$</code></li>
+<li><code>$\kappa \sim(T-T_c)^{-\gamma} \text{ with } \gamma \approx 1.2$</code></li>
+</ul>
+<p>这些指数  <code>$ \beta, \delta, \gamma $</code> 被称为 <strong>临界指数（critical exponent）</strong>，系统在相变临界点附近的行为由临界指数描述。不同的系统若具有相同的临界指数，则同属一个 <strong>“普适类”（universality class）</strong>。尽管尚无严格的数学证明，实验与数值模拟表明：临界指数具有普适性，与系统的微观细节无关，仅取决于<strong>维度、对称性及关联长度</strong>的性质。在临界点附近，系统的所有微观特征似乎都被“遗忘”，只剩下热涨落在遥远的关联尺度上此起彼伏，主导着系统的行为。要正确理解这些涨落，需要用到 RG （重整化群）和 CFT（共形场论）的知识。为了能够稍微领略其中思想的妙处，我们转向研究最经典也最简单的相变模型 —— <strong>Ising Model</strong>。</p>
+<h2 id="2-ising-model---mean-field-theory">2 Ising Model - Mean Field Theory</h2>
+<p>我们先考虑含有 N 个位点的 d 维晶格，在每个格点上有一个自旋，要么向上，要么向下，分别对应  <code>$ s_i=+1 $</code> 和 <code>$s_i=-1$</code>。系统在磁场  <code>$ B $</code> 的作用下还有磁场能 <code>$E_B=-B\sum_{i=1}^{N}s_i$</code>，总能量就是
+<code>$$E=-J\sum_{\langle ij\rangle}s_i s_j-B\sum_i s_i$$</code>
+其中符号  <code>$ \langle ij \rangle $</code> 表示对每个位点所有最近邻位点的不重复求和，对于 d 维方格，最近邻的个数是 <code>$q=2d$</code>。 <code>$ J $</code> 表示自旋间的相互作用， <code>$ J&gt;0 $</code> 时邻位自旋趋于平行，称为铁磁； <code>$ J&lt;0 $</code> 时趋于反平行，称为反铁磁。这里取 <code>$J&gt;0$</code>。</p>
+<p>以上就是 Ising Model 的全部条件，我们的目标是计算配分函数
+\begin{align}
+Z=\sum_{{s_i}} e^{-\beta E[s_i]}
+\end{align}
+并给出平均自旋，也就是我们关心的平均磁化强度
+\begin{align}
+m=\frac{1}{N}\sum_{i}\langle s_i \rangle =\frac{1}{N\beta} \frac{\partial \log Z}{\partial B}
+\end{align}</p>
+<h2 id="21-平均场理论">2.1 平均场理论</h2>
+<p>对于大部分格点模型，我们不可能给出配分函数的精确形式，除了 d=1（无相变）和 d=2 且 B=0（将在第 3 节进行讨论）的情况。为了对结果先有一个大致认识，我们介绍一种近似方法 —— <strong>平均场理论（Mean Field Theory）</strong>。</p>
+<p>我们把自旋的相互作用项改写为以下形式
+<code>$$\begin{align} \begin{split} s_i s_j&amp;=[(s_i-m)+m][(s_j-m)+m]\\ &amp;=(s_i-m)(s_j-m)+m(s_j-m)+m(s_i-m)+m^2     \end{split} \end{align}$$</code>
+平均场理论假设自旋偏离平均磁化强度的涨落很小，从而视第一项为高阶小量。这并不是说每个自旋的涨落都很小，这是不可能的，因为  <code>$ s_i $</code> 只能取 +1 或 -1，不管  <code>$ m\in [-1,1] $</code> 取何值，总会有较大的  <code>$ \langle (s_i-m)^2\rangle \sim 1-m^2 $</code> 出现。相反，这是在说邻位自旋的涨落之间无关联，即 <code>$\langle (s_i-m)(s_j-m)\rangle=0\text{, }i\neq j$</code>。因此我们可以将总能量写为
+<code>$$\begin{align} \begin{split} E_{mf}&amp;=-J\sum_{\langle ij\rangle}[m(s_i+s_j)-m^2]-B\sum_i s_i\\ &amp;=\frac{1}{2}JNqm^2-(Jqm+B)\sum_i s_i \end{split} \end{align}$$</code>
+平均场理论消除了自旋间的相互作用，代之以一个在有效磁场  <code>$ B_{eff}=B+Jqm $</code> 作用下的二能级系统。自旋通过对有效磁场的贡献来感受到其相邻自旋的平均效果。可以容易写出配分函数
+<code>$$\begin{align} \begin{split} Z&amp;=e^{-\frac{1}{2}\beta JNqm^2}(e^{-\beta B_{eff}}+e^{\beta B_{eff}})^N\\ &amp;=e^{-\frac{1}{2}\beta JNqm^2}2^N\cosh^N\beta B_{eff} \end{split} \end{align}$$</code>
+尽管式中  <code>$ B_{eff} $</code> 仍然包含目前未知的平均磁化强度 <code>$m$</code>，我们依然可以通过式 (3) 隐式地确定它：
+\begin{align}
+m=\tanh(\beta B+\beta Jqm)
+\end{align}
+现在我们分类讨论解这个方程：</p>
+<p><figure><img src="/post/statphy2/3.png"><figcaption>
+       <h4>Figure 3: `B=0\text{, } \beta Jq&lt;1`</h4>
+     </figcaption>
+ </figure>
+
+<figure><img src="/post/statphy2/4.png" width="267px"><figcaption>
+       <h4>Figure 4: `B=0\text{, } \beta Jq&gt;1`</h4>
+     </figcaption>
+ </figure>
+</p>
+<h3 id="b0">B=0</h3>
+<p>解方程 <code>$m=\tanh(\beta Jqm)$</code>。由于在 x=0 附近有 <code>$\tanh x\approx x-\frac{1}{3}x^3+\dots$</code>，在  <code>$ m=0 $</code> 处方程右侧的斜率是 <code>$\beta Jq$</code>。这意味着</p>
+<ul>
+<li>当  <code>$ \beta Jq&lt;1 $</code> 即 <code>$k_B T&gt;Jq$</code>（对应于高温）时，如图 (3) 方程只有  <code>$ m=0 $</code> 解，系统自旋随机排列，平均磁化强度为零，熵战胜了能量；</li>
+<li>当  <code>$ \beta Jq&gt;1 $</code> 即 <code>$k_B T&lt;Jq$</code>（低温）时，如图 (4) 方程有三个解 <code>$m=\pm m_0\text{, } m=0$</code>，其中  <code>$ m=0 $</code> 是不稳定的（当我们考察自由能会发现这一点），另外两个稳定解则代表了自旋间的相互作用开始变得重要，系统自旋趋于有序排列，且当 <code>$\beta \rightarrow \infty\text{, }m_0\rightarrow 1$</code>，零温下自旋完全同向。</li>
+</ul>
+<p>因此在这种情况下临界温度为
+<code>$$k_BT_c=Jq$$</code></p>
+<p>平均磁化强度随着温度上升，在某个有限值  <code>$ T=T_c $</code> 时突然变为零，在更高的温度下根本没有磁化，而不是随着  <code>$ T\rightarrow \infty $</code> 缓慢趋于零，这违反了我们认为物理学普遍是光滑、解析的直觉，也正是相变最明显的特征。</p>
+<h3 id="b---neq--0">B  <code>$ \neq $</code> 0</h3>
+<p>解方程 <code>$m=\tanh(\beta B+\beta Jqm)$</code>。</p>
+<ul>
+<li>
+<p>当 <code>$\beta \rightarrow 0$</code>（高温）时，方程右侧 <code>$\tanh(\beta B+\beta Jqm)\rightarrow \beta B+\beta Jqm $</code>，解得 <code>$m\rightarrow\frac{B}{k_B T-Jq} \approx \frac{B}{k_B T}$</code>，随高温光滑地趋于零；</p>
+</li>
+<li>
+<p>温度改变的过程中，可以将方程写为 <code>$(m+\frac{B}{Jq})-\frac{B}{Jq}=\tanh \beta Jq(m+\frac{B}{Jq})$</code>，假设 <code>$B&gt;0$</code>，这就是截距为负的直线  <code>$ x-b $</code> 与曲线  <code>$ \tanh \beta Jq x $</code> 求交点的问题。我们仍可以沿用图 (4)，唯一的区别是直线向下偏移。如果  <code>$ B/Jq  $</code> 足够大，直线和曲线的交点显然只剩下一个；而若  <code>$ B $</code> 较小而  <code>$ \beta Jq  $</code> 较大，直线和曲线仍然会有三个交点，但是只有  <code>$ \rm{sign}(m)=\rm{sign}(B) $</code> 的解会是稳定的，其余两个是不稳定和亚稳定的，这在以后我们考虑自由能时会明白。</p>
+</li>
+<li>
+<p>当 <code>$\beta \rightarrow \infty$</code>（低温），这个交点一定是 <code>$m=\pm m_0=\pm 1$</code>，符号取决于磁场的符号。</p>
+</li>
+</ul>
+<p>综合以上，我们发现  <code>$ B\neq 0 $</code> 时不存在相变， <code>$ m $</code> 随温度  <code>$ T $</code> 的变化是平滑的。</p>
+<p><figure><img src="/post/statphy2/5.png"><figcaption>
+       <h4>Figure 5: ` B=0 ` 时磁化强度曲线</h4>
+     </figcaption>
+ </figure>
+
+<figure><img src="/post/statphy2/6.png" width="390px"><figcaption>
+       <h4>Figure 6: ` B\ne 0 ` 时磁化强度曲线</h4>
+     </figcaption>
+ </figure>
+</p>
+<p>最终我们能够画出两种情况下  <code>$ m $</code> 随温度变化的曲线，如图 (5)(6)。前者存在相变，而后者没有相变。但故事没有到此为止。
+我们将两幅图合起来看，可以得到更立体的图像（交给大家想象）。在固定  <code>$ T&lt;T_c $</code> 的情况下，改变  <code>$ B $</code> 从负到正，会发生一个从  <code>$ m=-1 $</code> 到  <code>$ m=+1 $</code> 的相变。</p>
+<p>相变本质是系统自由能在某个控制参量变化时发生非解析突变，作为自由能导数的宏观量随之产生不连续或发散的行为，温度仅仅是众多参量之一。不同参量驱动的相变对应着哈密顿量的不同成分，有助于我们理解不同物理机制的作用。</p>
+<h2 id="22-平均场理论给出的临界指数">2.2 平均场理论给出的临界指数</h2>
+<p>我们当然也能够计算平均场近似给出的临界指数。首先考虑  <code>$ B=0 \text{, }T&lt;T_c $</code> 时平均磁化强度与温度的关系，只要在临界点附近展开式 (7)
+<code>$$m\approx \beta Jqm-\frac{1}{3}(\beta Jqm)^3+\dots$$</code>
+可解得 <code>$m\approx \pm(\frac{3\beta Jq-3}{(\beta Jq)^3})^{1/2}=\pm(\frac{3T_c-3T}{(T/T_c)^3\cdot T})^{1/2}$</code>，其中已用到临界温度 <code>$k_B T_c=Jq$</code>。此即
+<code>$$m\sim \pm(T_c-T)^{1/2}$$</code></p>
+<p>其次，我们也可以考虑当固定  <code>$ T=T_c $</code> 时，从  <code>$ B\neq 0 $</code> 的某处接近  <code>$ B=0 $</code> 时  <code>$ m $</code> 的变化。此时 <code>$\beta Jq=1$</code>，式 (7) 变为
+$$m=\tanh (B/Jq +m)$$
+展开小量 <code>$B$</code>，得
+$$m\approx \frac{B}{Jq}+m-\frac{1}{3}(\frac{B}{Jq}+m)^3+\dots=\frac{B}{Jq}+m-\frac{1}{3}m^3+\mathcal{O}(B^2)$$
+同样整理得到
+$$m\sim B^{1/3}$$</p>
+<p>最后考虑在  <code>$ B=0 $</code> 的情况下磁化率  <code>$ \chi=N\frac{\partial m}{\partial B}\vert_T $</code> 与温度的关系。只要式 (7) 对  <code>$ B $</code> 进行微分就可以得到
+$$\frac{\chi}{N}=\frac{\beta+\beta Jq \chi}{\cosh^2(\beta Jqm)}$$
+由 <code>$ T\rightarrow T_c $</code> 时 <code>$m\rightarrow 0$</code>，可以解出
+$$\chi=\frac{N\beta}{1-\beta Jq}\sim (T-T_c)^{-1}$$</p>
+<p>是的，我们再一次得到了 van der Waals 方程的临界指数 <code>$\beta=1/2\text{, }\delta=3\text{, }\gamma =1$</code>，因为它本质也是一种平均场近似。</p>
+<h3 id="平均场理论的有效性">平均场理论的有效性</h3>
+<p>平均场理论只是一种近似方法，和 van der Waals 方程所预言的一样，并不能和实验完好地符合。然而，对于维度  <code>$ d\geq d_c=4 $</code> 的情况（ <code>$ d_c $</code> 称为上临界维度），平均场理论又是完全准确的，因为高维系统中每个自旋都有足够多的邻位自旋，临界热涨落相对被压制，系统行为趋于平均，给出与维度无关的临界指数。低维的真实情况是：1D Ising Model 无相变；2D Ising Model 的严格解给出</p>
+<ul>
+<li><code>$m_0\sim(T_c-T)^{\beta}\text{ with }\beta =\frac{1}{8}$</code></li>
+<li><code>$m\sim B^{1/\delta}\text{ with }\delta =15$</code></li>
+<li><code>$\chi\sim(T-T_c)^{-\gamma}\text{ with }\gamma =\frac{7}{4}$</code></li>
+</ul>
+<p>3D Ising Model 的数值解给出 <code>$\beta\approx 0.32\text{, }\delta=4.8\text{, }\gamma =1.2$</code>。我们发现，这又与我们实验中看到的气液相变临界指数完全相同！平均场理论在两个不同的系统中给出了相同的错误答案，而两者的实验又给出了同一份正确答案！这说明它们属于同一普适类。</p>
+<h2 id="3-ising-model---exact-results">3 Ising Model - Exact Results</h2>
+<p>平均场近似是易于理解和操作的，但是不依赖于平均场的技术，我们也能够给出有关 Ising Model 的一些精确结果。注意，这并不是说我们像 Onsager 在历史上所做的那样，严格地求解整个模型，而仅仅是在  <code>$ B=0 $</code> 的情况下，从低温/高温极限分别理解模型的行为，给出配分函数在微扰范围内的精确项，并发现其中存在的某种“对偶性”，以此给出临界温度。</p>
+<h3 id="31-2d-ising-model-的低温极限">3.1 2D Ising Model 的低温极限</h3>
+<p>Ising Model 的能量和配分函数分别是</p>
+<p><code>$$\begin{align} E=-J\sum_{\langle ij\rangle}s_i s_j\\ Z=\sum_{\{s_i\}} e^{-\beta E[s_i]} \end{align}$$</code></p>
+<p>在低温极限  <code>$ \beta \rightarrow \infty $</code> 下，配分函数将由低能项  <code>$ e^{-\beta E} $</code> 主导，我们只需要列出前几个最低能态之和。</p>
+<ul>
+<li><strong>基态</strong>。显然当自旋全部朝上或朝下时能量最低，共 N 个自旋，其中每个自旋只计算右方和下方的相互作用（-2J），能量总共为 <code>$E=E_0=-2NJ$</code>；简并度为 2。</li>
+<li><strong>第一激发态</strong>。在基态的基础上，增加最小的能量即翻转一个自旋，其邻位相互作用从 -J 变为 +J，共增加了 4 个 2J，能量总共为 <code>$E_1=E_0 +8J$</code>；可以翻转 N 个自旋中的任意一个，简并度为 N。</li>
+</ul>
+<p>我们介绍一种更高效的表示方法：只绘制连接两个反向平行的自旋之间的“断裂”键，用红线表示，将翻转的自旋绘制为红点，未翻转的自旋绘制为蓝点，如图 (7) 所示。状态的能量仅由图中的红线数量决定。</p>
+<p><figure><img src="/post/statphy2/E1.png"><figcaption>
+      <h4>Figure 7: 第一激发态 `E_1=E_0&#43;8J`，简并度 N</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/post/statphy2/E2.png"><figcaption>
+      <h4>Figure 8: 第二激发态 `E_2=E_0&#43;12J`，简并度 2N</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/post/statphy2/E3.png" width="400px"><figcaption>
+      <h4>Figure 9: 第三激发态 `E_3=E_0&#43;16J`，简并度为 N(N&#43;9)/2</h4>
+    </figcaption>
+</figure>
+</p>
+<ul>
+<li>
+<p><strong>第二激发态</strong> 如图 (8)。翻转相邻两个自旋，相比基态增加 6 条红线，能量为 <code>$E_2=E_0+12J$</code>；考虑到相邻自旋可以水平或垂直朝向，简并度为 2N。</p>
+</li>
+<li>
+<p><strong>第三激发态</strong> 如图 (9)。能量为 <code>$E_3=E_0+16J$</code>。共四类情况：</p>
+<ul>
+<li>翻转两个不相邻自旋，简并度为 N(N-5)/2；</li>
+<li>翻转正方形顶点上的四个相邻自旋，可选正方形的个数与自旋总数相同，简并度为 N；</li>
+<li>翻转在同一直线上的三个相邻自旋，考虑两个朝向，简并度为 2N；</li>
+<li>翻转不在同一直线上的三个相邻自旋，考虑四个朝向，简并度为 4N。</li>
+</ul>
+<p>总的简并度就是 N(N+9)/2。</p>
+</li>
+</ul>
+<p>将以上图形相加，我们就得到了配分函数的前几项：
+<code>$$\begin{align} \begin{split}     Z&amp;=2(e^{-\beta E_0}+Ne^{-\beta (E_0+8J)}+2N e^{-\beta(E_0+12J)}+\frac{1}{2}N(N+9)e^{-\beta(E_0+16J)}+\dots)\\ &amp;=2e^{2N\beta J}(1+Ne^{-8\beta J}+2Ne^{-12\beta J}+\frac{1}{2}(N^2+9N)e^{-16\beta J}+\dots) \end{split} \end{align}$$</code>
+其中我们把基态的简并因子 2 放在括号外面，因为关于激发态的讨论是建立在一种基态的翻转之上的。取对数得到
+\begin{align}
+\log Z=\log 2+2N\beta J+Ne^{-8\beta J}+2Ne^{-12\beta J}+\frac{9}{2}Ne^{-16\beta J}+\dots
+\end{align}
+其中已用到 <code>$\log (1+\epsilon)\approx\epsilon-\frac{\epsilon^2}{2}+\frac{\epsilon^3}{3}-\dots \text{, }\epsilon \ll 1$</code>。展开式的  <code>$ \frac{1}{2}N^2 e^{-16\beta J} $</code> 项将被高阶项  <code>$ -\frac{1}{2}(Ne^{-8\beta J}+\dots)^2 $</code> 抵消。可以看到，配分函数的对数与 N 成正比，这与我们预期的自由能是广延量这一点完全符合。</p>
+<p>另外，回顾上一节 Cluster Expansion 的内容，实际上  <code>$ N^2 $</code> 的出现与不连通图（图 (9) 的第一类）有关。配分函数也完全可以写成连通图的指数形式，不连通图可以分解为更小连通子图的乘积， <code>$ N^2e^{-16\beta J} $</code> 实际是两个  <code>$ Ne^{-8\beta J}  $</code> 的乘积，我们再一次感受了图形化计算方法的魅力，并在接下来计算高温极限配分函数的过程中给我们启发。</p>
+<h3 id="32-2d-ising-model-的高温极限">3.2 2D Ising Model 的高温极限</h3>
+<p>在高温极限  <code>$ \beta \rightarrow 0 $</code> 时，我们无法沿用低温极限下指数压倒的优势，因为此时各项的数量级都接近 1。我们的目标是找到配分函数在  <code>$ \beta J \ll 1 $</code> 情况下的展开。先将配分函数写成以下形式
+$$Z=\sum_{{s_i}}\exp(\beta J\sum_{\langle ij\rangle} s_i s_j)=\sum_{{s_i}}\prod_{\langle ij\rangle}e^{\beta J s_i s_j} $$
+由于  <code>$ s_i, s_j=\pm 1 $</code> 是二值变量，我们可以将它写成等效的线性形式
+<code>$$\begin{align} \begin{split} e^{\beta J s_i s_j}&amp;=\cosh \beta J +s_i s_j \sinh \beta J\\ &amp;=\cosh \beta J (1+s_i s_j \tanh \beta J)   \end{split} \end{align}$$</code>
+则配分函数可以化为
+<code>$$\begin{align} \begin{split} Z&amp;=\sum_{\{s_i\}}\prod_{\langle ij\rangle}\cosh \beta J (1+s_i s_j \tanh \beta J)\\ &amp;=(\cosh \beta J)^{qN/2}\sum_{\{s_i\}}\prod_{\langle ij\rangle}(1+s_i s_j \tanh \beta J) \end{split} \end{align}$$</code>
+其中  <code>$ qN/2 $</code> 是邻位自旋相互作用的数量，在 2D 情况下 q=4。</p>
+<p>写成这种形式后，该怎么展开就显而易见了：以系统构型  <code>$ \{s_i\} $</code> 为指标的连加，以相互作用指标  <code>$ \langle s_i s_j\rangle \rangle  $</code> 构成的连乘项 <code>$(1+\tanh \beta J)$</code>，其中  <code>$ \tanh \beta J \ll 1 $</code> —— 这正是我们想要的 Cluster Expansion 的形式。</p>
+<p>对于领头阶，我们不需要图形也可以写出来：
+$$Z\approx (\cosh \beta J)^{2N}\sum_{{s_i}} 1= 2^{N} (\cosh \beta J)^{2N}$$
+我们以  <code>$ s_i s_j\tan \beta J $</code> 代表一对邻位自旋 <code>$\langle s_i s_j\rangle$</code>。一对邻位自旋可以用以下图形表示</p>
+<figure><img src="/post/statphy2/t1.png" width="315px">
+</figure>
+
+<p>但是我们还需要对指标  <code>$ s_i,  s_j $</code> 求和，由于 <code>$\sum_{s_i, s_j}s_i s_j=+1-1-1+1=0$</code>，任意一对相邻自旋对配分函数的总贡献是消失了的。这意味着我们需要找出非零的贡献项。</p>
+<p>我们先考虑连通图，由于 <code>$s_i^2=1$</code>，对于不闭合的连通图来说，求和是以下形式
+$$\sum_{{s_i}} (s_i s_j) (s_j s_k)\dots(s_ls_m)(s_ms_n)=\sum_{{s_i}} s_i(s_j^2)(s_k^2)\dots(s_l^2)(s_m^2)s_n=\sum_{s_i,s_n} s_i s_n=0$$
+始终会退化回一对相互作用的情况。这提示我们非零的贡献必定来自于闭合的连通图。因此除了领头阶外，最小的非零贡献项来自于正方形连通图：</p>
+<figure><img src="/post/statphy2/t4.png" width="580px">
+</figure>
+
+<p>像这样的连通图在整个系统中有 N 个，再考虑剩下  <code>$ 2^{N-4} $</code> 个自由度，配分函数现在是
+<code>$$\begin{align} \begin{split} Z&amp;=2^{N}(\cosh \beta J)^{2N}+2^{N-4}N\cdot 2^{4}(\tanh \beta J)^{4}+\dots\\ &amp;=2^{N}(\cosh \beta J)^{2N}(1+N(\tanh \beta J)^{4}+\dots) \end{split} \end{align}$$</code></p>
+<p>接下来是六边的情况，两种朝向的长方形
+<figure><img src="/post/statphy2/t6.png" width="400px">
+</figure>
+
+八边的情况更巧妙一些。既有非连通的情况：
+<figure><img src="/post/statphy2/t81.png" width="400px">
+</figure>
+
+也有连通的情况：
+<figure><img src="/post/statphy2/t83.png" width="400px">
+</figure>
+
+这与低温极限下的第三激发态的情况 图(9) 完全类似，一个不连通图 + 三个连通图，包括对应的简并度也完全一致，我们的展开方法在两种情况下得到了统一。</p>
+<p>将以上图形相加，我们就得到了高温极限下配分函数的前几项：</p>
+<p>\begin{align}
+Z=2^{N}(\cosh \beta J)^{2N}(1+N(\tanh \beta J)^{4}+2N(\tanh \beta J)^{6}+\frac{1}{2}(N^2 +9N)(\tanh \beta J)^8+\dots)
+\end{align}</p>
+<h2 id="4-kranmers-wannier-duality">4 Kranmers-Wannier Duality</h2>
+<p>Ising Model 在低温/高温极限下的行为显然是完全不同的，前者为最低能量态，后者为最大无序态。然而，我们在低温/高温极限下得到的配分函数 (10)(15) 形式看起来竟如此相似！仅仅是替换了一个变量</p>
+<p>\begin{align}
+e^{-2\beta J} \longleftrightarrow \tanh \beta J
+\end{align}</p>
+<p>虽然我们只检查了前几项的系数。但是我们可以证明（限于篇幅，本文不介绍，感兴趣的读者可以参考 David Tong - <a href="https://www.damtp.cam.ac.uk/user/tong/statphys.html">Statistical Physics</a> P166-170），在微扰展开的所有阶数上，这样的一致性完全成立。配分函数在式 (16) 这种变换下的对称性被称为 <strong>Kranmers-Wannier Duality</strong>。我们也可以用更精确地语言表述它：对于二维正方格子上的零外场 Ising Model，存在一种映射，使得温度为  <code>$ \beta $</code> 的模型与一个“对偶模型”在“对偶温度” <code>$ \tilde{\beta} $</code> 下具有相同的物理结构，其中
+$$e^{-2\tilde{\beta} J}=\tanh \beta J$$
+或者写为更加对称的形式
+$$\sinh 2\tilde{\beta} J=\frac{1}{\sinh 2\beta J}$$
+两种情况下的配分函数由下式相关联：
+$$Z[\beta]=\frac{2^{N}(\cosh \beta J)^{2N}}{2^{e^{2N\tilde{\beta}J}}}Z[\tilde{\beta}]$$
+这意味着，只要你知道某一温度下的 Ising Model 相关的热力学性质，就可以完全知道另一温度下的相关性质。如果我们假设相变是唯一的，随着低温和高温相互靠近，其必然会到达一个相同的温度，即 <code>$\beta =\tilde{\beta}$</code>，这就是临界温度
+$$k_BT =\frac{2J}{\ln(\sqrt{2}+1)}\approx2.269J$$
+与 Onsager 严格解给出的临界温度一致。</p>
+<p>值得一提的是，Onsager 本人在 1944 年给出 2D Ising Model 的精确自由能解时，并没有依赖 KW Duality 来推出临界温度。他是通过一套非常复杂的代数方法（使用转移矩阵、李代数与谱分解）直接计算出热力学极限下的自由能，并从自由能的奇点位置识别出临界温度。而 Kramers 和 Wannier 两人在 1941 年就已经通过对偶性预言了临界点必须是自对偶点，给出了这个临界温度的位置。Onsager 解是后者的完美验证。</p></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://arapoken.github.io/js/toc.js'></script>
+<link rel="stylesheet" href='https://arapoken.github.io/css/toc.css' />
+
+  
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='https://arapoken.github.io/css/gitalk.css'>
+<script src='https://arapoken.github.io/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Ov23ligONInfKNLN9RH6',
+    clientSecret: '9fc687a011bb6375cbe71f82a793446d0d09b75d',
+    repo: 'mysite-comment',
+    owner: 'arapoken',
+    admin: ['arapoken'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://arapoken.github.io/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+
+</body>
+
+<script type="application/javascript" src="https://arapoken.github.io/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"
+  integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"
+  integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+  integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+<script type="application/javascript" src='https://arapoken.github.io/js/search.js'></script>
+
+
+
+</html>
